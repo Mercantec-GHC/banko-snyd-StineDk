@@ -38,7 +38,8 @@ for (int i = 0; i < inputArray.Length; i++)
 
 Label:
 Console.WriteLine("Number Drawn: ");
-int numberDrawn = Convert.ToInt32(Console.ReadLine());
+inputText = Console.ReadLine().Trim();
+int numberDrawn = int.Parse(inputText);
 
 if (numberDrawn != null)
 {
@@ -50,13 +51,18 @@ while (check == true)
     {
         for (int j = 0; j < plate1.GetLength(1); j++)
         {
+            // if numberDrawn matches a number on the plate it changes the number to 0.
             if (plate1[i, j] == numberDrawn)
             {
                 plate1[i, j] = 0;
-                
+                // Checks if there is bingo on one row.
                 if (plate1[i,0] == 0 && plate1[i,1] == 0 && plate1[i,2] == 0 && plate1[i,3] == 0 && plate1[i,4] == 0)
                 {
-                    Console.WriteLine($"You have Banko on {plateID} row {i+1}");
+                    Console.WriteLine($"You have one row on {plateID} row {i+1}");
+                    for (int k = 0; k < plate1.GetLength(1); k++)
+                    {
+                        if (plate1[k,0] == plate1[i,0] && plate1[k,1] == plate1[i,1] && plate1[k,2] == plate1[i,2] && )
+                    }
                 }
             }
         }
