@@ -1,40 +1,37 @@
 ﻿// BankoCheater
-int[,] plate = new int[3, 5];
+int[,] plate1 = new int[3, 5];
+int[,] plate2 = new int[3, 5];
+int[,] plate3 = new int[3, 5];
 string inputText = "";
-MakeBankoPlates("Hej", 1);
+
 PrintPlates();
-void MakeBankoPlates(string plateID, int plateAmount)
+
+Console.WriteLine();
+Console.WriteLine("What is your plateID?");
+string plateID = Console.ReadLine().Trim().ToLower();
+
+Console.WriteLine($"Type in your {plateID} plate, row 1. Separate the numbers with ','");
+inputText = Console.ReadLine().Trim();
+string[] inputArray = inputText.Split(",");
+for (int i = 0; i < inputArray.Length; i++)
 {
-    Console.WriteLine();
-    Console.WriteLine("How many plates do you have?");
-    plateAmount = Convert.ToInt32(Console.ReadLine());
+    plate1[0, i] = Convert.ToInt32(inputArray[i]);
+}
 
-    for (int k = 0; k < plateAmount; k++)
-    {
-        Console.WriteLine($"Type in your {plateID} plate, row 1. Separate the numbers with ','");
-        inputText = Console.ReadLine().Trim();
-        string[] inputArray = inputText.Split(",");
-        for (int i = 0; i < inputArray.Length; i++)
-        {
-            plate[0, i] = Convert.ToInt32(inputArray[i]);
-        }
+Console.WriteLine($"Type in your {plateID} plate, row 2. Separate the numbers with ','");
+inputText = Console.ReadLine().Trim();
+inputArray = inputText.Split(",");
+for (int i = 0; i < inputArray.Length; i++)
+{
+    plate1[1, i] = Convert.ToInt32(inputArray[i]);
+}
 
-        Console.WriteLine($"Type in your {plateID} plate, row 2. Separate the numbers with ','");
-        inputText = Console.ReadLine().Trim();
-        inputArray = inputText.Split(",");
-        for (int i = 0; i < inputArray.Length; i++)
-        {
-            plate[1, i] = Convert.ToInt32(inputArray[i]);
-        }
-
-        Console.WriteLine($"Type in your {plateID} plate, row 3. Separate the numbers with ','");
-        inputText = Console.ReadLine().Trim();
-        inputArray = inputText.Split(",");
-        for (int i = 0; i < inputArray.Length; i++)
-        {
-            plate[2, i] = Convert.ToInt32(inputArray[i]);
-        }
-    }
+Console.WriteLine($"Type in your {plateID} plate, row 3. Separate the numbers with ','");
+inputText = Console.ReadLine().Trim();
+inputArray = inputText.Split(",");
+for (int i = 0; i < inputArray.Length; i++)
+{
+    plate1[2, i] = Convert.ToInt32(inputArray[i]);
 }
 
 //Console.WriteLine("Number drawn: ");
@@ -42,18 +39,18 @@ void MakeBankoPlates(string plateID, int plateAmount)
 void PrintPlates()
 {
     Console.WriteLine("Your plate: ");
-    for (int i = 0; i < plate.GetLength(1); i++)
+    for (int i = 0; i < plate1.GetLength(1); i++)
     {
-        Console.Write(plate[0, i] + " ");
+        Console.Write(plate1[0, i] + " ");
     }
     Console.WriteLine();
-    for (int i = 0; i < plate.GetLength(1); i++)
+    for (int i = 0; i < plate1.GetLength(1); i++)
     {
-        Console.Write(plate[1, i] + " ");
+        Console.Write(plate1[1, i] + " ");
     }
     Console.WriteLine();
-    for (int i = 0; i < plate.GetLength(1); i++)
+    for (int i = 0; i < plate1.GetLength(1); i++)
     {
-        Console.Write(plate[2, i] + " ");
+        Console.Write(plate1[2, i] + " ");
     }
 }
