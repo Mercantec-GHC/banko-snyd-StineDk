@@ -1,0 +1,15 @@
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\bin\Debug\net8.0\BankoCheater.exe
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\bin\Debug\net8.0\BankoCheater.deps.json
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\bin\Debug\net8.0\BankoCheater.runtimeconfig.json
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\bin\Debug\net8.0\BankoCheater.dll
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\bin\Debug\net8.0\BankoCheater.pdb
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\obj\Debug\net8.0\BankoCheater.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\obj\Debug\net8.0\BankoCheater.AssemblyInfoInputs.cache
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\obj\Debug\net8.0\BankoCheater.AssemblyInfo.cs
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\obj\Debug\net8.0\BankoCheater.csproj.CoreCompileInputs.cache
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\obj\Debug\net8.0\BankoCheater.sourcelink.json
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\obj\Debug\net8.0\BankoCheater.dll
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\obj\Debug\net8.0\refint\BankoCheater.dll
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\obj\Debug\net8.0\BankoCheater.pdb
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\obj\Debug\net8.0\BankoCheater.genruntimeconfig.cache
+C:\Users\ricob\OneDrive\Dokumenter\GitHub\banko-snyd-StineDk\BankoCheater\obj\Debug\net8.0\ref\BankoCheater.dll
