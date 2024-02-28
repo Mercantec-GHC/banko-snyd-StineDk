@@ -1,12 +1,11 @@
 ﻿// BankoCheater
-bool play = false;
 bool oneRow = false;
 bool twoRows = false;
 bool fullPlate = false;
 string drawHistory = "";
-int count1 = 0;
-int count2 = 0;
-int count3 = 0;
+int countPlate1 = 0;
+int countPlate2 = 0;
+int countPlate3 = 0;
 int[,] plate1 ={
     {21, 40, 61, 70, 81},
     {36, 57, 66, 77, 84},
@@ -22,7 +21,6 @@ int[,] plate3 ={
     {6, 25, 54, 74, 85},
     {27, 34, 56, 65, 86}
 };
-
 // Checkpoint the program goes back to.
 Label:
 Console.Clear();
@@ -31,13 +29,9 @@ Console.Write("Number Drawn: ");
 string input = Console.ReadLine().Trim();
 drawHistory = drawHistory + "--" + input;
 int numberDrawn = int.Parse(input);
-// Checks the number drawn.
-if (numberDrawn >= 1 && numberDrawn <= 90)
-{
-    play = true;
-}
-// Cross Check the numberDrawn with the plates.
-while (play == true)
+
+// Cross Checks the numberDrawn with the plates.
+while (numberDrawn >= 1 && numberDrawn <= 90)
 {
     // Runs plate1.
     // Runs the length of the array lateral.
@@ -61,13 +55,13 @@ while (play == true)
                 }
                 // Method checks if there is 2 row bingo.
                 CheckTwoRows(plate1, 0, 1, 2);
-                if (twoRows && !fullPlate && count1 == 0)
+                if (twoRows && !fullPlate && countPlate1 == 0)
                 {
                     Console.WriteLine("You have 2 rows on plate1.");
                     Console.Write("Press Enter to continue.");
                     Console.ReadLine();
                     // So I only get this notification once.
-                    count1++;
+                    countPlate1++;
                 }
                 // Method checks if the is 1 row bingo.
                 CheckOneRow(plate1, i);
@@ -88,7 +82,6 @@ while (play == true)
             if (plate2[i, j] == numberDrawn)
             {
                 plate2[i, j] = 0;
-
                 CheckFullPlate(plate2, 0, 1, 2);
                 if (fullPlate)
                 {
@@ -97,12 +90,12 @@ while (play == true)
                     Console.ReadLine();
                 }
                 CheckTwoRows(plate2, 0, 1, 2);
-                if (twoRows && !fullPlate && count2 == 0)
+                if (twoRows && !fullPlate && countPlate2 == 0)
                 {
                     Console.WriteLine("You have 2 rows on plate2.");
                     Console.Write("Press Enter to continue.");
                     Console.ReadLine();
-                    count2++;
+                    countPlate2++;
                 }
                 CheckOneRow(plate2, i);
                 if (oneRow && !twoRows && !fullPlate)
@@ -122,7 +115,6 @@ while (play == true)
             if (plate3[i, j] == numberDrawn)
             {
                 plate3[i, j] = 0;
-
                 CheckFullPlate(plate3, 0, 1, 2);
                 if (fullPlate)
                 {
@@ -131,12 +123,12 @@ while (play == true)
                     Console.ReadLine();
                 }
                 CheckTwoRows(plate3, 0, 1, 2);
-                if (twoRows && !fullPlate && count3 == 0)
+                if (twoRows && !fullPlate && countPlate3 == 0)
                 {
                     Console.WriteLine("You have 2 rows on plate3.");
                     Console.Write("Press Enter to continue.");
                     Console.ReadLine();
-                    count3++;
+                    countPlate3++;
                 }
                 CheckOneRow(plate3, i);
                 if (oneRow && !twoRows && !fullPlate)
