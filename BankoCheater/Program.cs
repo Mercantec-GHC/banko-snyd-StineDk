@@ -1,26 +1,41 @@
 ﻿// BankoCheater
+using System.Numerics;
+
 bool oneRow = false;
 bool twoRows = false;
 bool fullPlate = false;
 string drawHistory = "";
 int numberDrawn = 0;
+int bingoCount = 0;
 int countPlate1 = 0;
 int countPlate2 = 0;
 int countPlate3 = 0;
-int[,] plate1 ={
-    {21, 40, 61, 70, 81},
-    {36, 57, 66, 77, 84},
-    {5, 13, 29, 78, 87}
+int countPlate4 = 0;
+int countPlate5 = 0;
+int[,] STB_1 ={
+    {1, 11, 20, 64, 81},
+    {5, 23, 42, 57, 76},
+    {15, 26, 34, 59, 67}
 };
-int[,] plate2 ={
-    {21, 30, 56, 67, 83},
-    {4, 14, 25, 43, 72},
-    {17, 59, 69, 73, 90}
+int[,] STB_2 ={
+    {4, 30, 41, 50, 85},
+    {6, 14, 51, 73, 87},
+    {29, 48, 67, 74, 90}
 };
-int[,] plate3 ={
-    {13, 22, 30, 47, 71},
-    {6, 25, 54, 74, 85},
-    {27, 34, 56, 65, 86}
+int[,] STB_3 ={
+    {10, 35, 51, 64, 70},
+    {6, 44, 65, 77, 85},
+    {29, 39, 69, 78, 89}
+};
+int[,] STB_4 ={
+    {23, 31, 45, 60, 83},
+    {14, 27, 36, 47, 55},
+    {9, 16, 49, 67, 77}
+};
+int[,] STB_5 ={
+    {2, 10, 42, 52, 60},
+    {16, 33, 54, 63, 77},
+    {18, 29, 66, 78, 88}
 };
 // Checkpoint the program goes back to.
 Label:
@@ -29,118 +44,200 @@ Console.WriteLine(drawHistory);
 Console.Write("Number Drawn: ");
 string input = Console.ReadLine().Trim();
 drawHistory = drawHistory + "--" + input;
-// if the input can't be converted to an int. go to checkpoint.
-if (!int.TryParse(input, out numberDrawn))
+// Try, attempt to do what is inside the block, if it can't go to catch.
+try
 {
-    // goes to checkpoint.
+    // Converts a string variable to an int variable.
+    numberDrawn = int.Parse(input);
+}
+// Catches the format exception, AKA if the conversion is unsuccessful go here. 
+catch (FormatException)
+{
+    // go to check point.
     goto Label;
 }
 // Cross Checks the numberDrawn with the plates.
 while (numberDrawn >= 1 && numberDrawn <= 90)
 {
-    // Runs plate1.
+    // Runs STB_1.
     // Runs the length of the array lateral.
-    for (int i = 0; i < plate1.GetLength(0); i++)
+    for (int i = 0; i < STB_1.GetLength(0); i++)
     {
         // runs the length of the array horizontal.
-        for (int j = 0; j < plate1.GetLength(1); j++)
+        for (int j = 0; j < STB_1.GetLength(1); j++)
         {
             // Makes numberDrawn to 0.
-            if (plate1[i, j] == numberDrawn)
+            if (STB_1[i, j] == numberDrawn)
             {
-                plate1[i, j] = 0;
+                STB_1[i, j] = 0;
                 // Method that checks if there is full plate bingo. 
-                CheckFullPlate(plate1, 0, 1, 2);
+                CheckFullPlate(STB_1, 0, 1, 2);
                 if (fullPlate)
                 {
-                    Console.WriteLine("plate1 is full.");
+                    Console.WriteLine("STB_1 is full.");
                     // So I can se the result, before the screen is cleared.
                     Console.Write("Press Enter to continue.");
                     Console.ReadLine();
                 }
                 // Method checks if there is 2 row bingo.
-                CheckTwoRows(plate1, 0, 1, 2);
-                if (twoRows && !fullPlate && countPlate1 == 0)
+                CheckTwoRows(STB_1, 0, 1, 2);
+                if (twoRows && !fullPlate && countPlate1 == 0 && bingoCount == 1)
                 {
-                    Console.WriteLine("You have 2 rows on plate1.");
+                    Console.WriteLine("You have 2 rows on STB_1.");
                     Console.Write("Press Enter to continue.");
                     Console.ReadLine();
                     // So I only get this notification once.
                     countPlate1++;
+                    bingoCount++;
                 }
                 // Method checks if the is 1 row bingo.
-                CheckOneRow(plate1, i);
-                if (oneRow && !twoRows && !fullPlate)
+                CheckOneRow(STB_1, i);
+                if (oneRow && !twoRows && !fullPlate && bingoCount == 0)
                 {
-                    Console.WriteLine($"You have 1 row on plate1.\nRow: {i+1}");
+                    Console.WriteLine($"You have 1 row on STB_1.\nRow: {i+1}");
                     Console.Write("Press Enter to continue.");
                     Console.ReadLine();
+                    bingoCount++;
                 }
             }
         }
     }
-    // Runs plate2.
-    for (int i = 0; i < plate2.GetLength(0); i++)
+    // Runs STB_2
+    for (int i = 0; i < STB_2.GetLength(0); i++)
     {
-        for (int j = 0; j < plate2.GetLength(1); j++)
+        for (int j = 0; j < STB_2.GetLength(1); j++)
         {
-            if (plate2[i, j] == numberDrawn)
+            if (STB_2[i, j] == numberDrawn)
             {
-                plate2[i, j] = 0;
-                CheckFullPlate(plate2, 0, 1, 2);
+                STB_2[i, j] = 0;
+                CheckFullPlate(STB_2, 0, 1, 2);
                 if (fullPlate)
                 {
-                    Console.WriteLine("plate2 is full.");
+                    Console.WriteLine("STB_2 is full.");
                     Console.Write("Press Enter to continue.");
                     Console.ReadLine();
                 }
-                CheckTwoRows(plate2, 0, 1, 2);
-                if (twoRows && !fullPlate && countPlate2 == 0)
+                CheckTwoRows(STB_2, 0, 1, 2);
+                if (twoRows && !fullPlate && countPlate2 == 0 && bingoCount == 0)
                 {
-                    Console.WriteLine("You have 2 rows on plate2.");
+                    Console.WriteLine("You have 2 rows on STB_2.");
                     Console.Write("Press Enter to continue.");
                     Console.ReadLine();
                     countPlate2++;
+                    bingoCount++;
                 }
-                CheckOneRow(plate2, i);
-                if (oneRow && !twoRows && !fullPlate)
+                CheckOneRow(STB_2, i);
+                if (oneRow && !twoRows && !fullPlate && bingoCount == 0)
                 {
-                    Console.WriteLine($"You have 1 row on plate2.\nRow: {i+1}");
+                    Console.WriteLine($"You have 1 row on STB_2.\nRow: {i+1}");
                     Console.Write("Press Enter to continue.");
                     Console.ReadLine();
+                    bingoCount++;
                 }
             }
         }
     }
-    // Runs plate3.
-    for (int i = 0; i < plate3.GetLength(0); i++)
+    // Runs STB_3.
+    for (int i = 0; i < STB_3.GetLength(0); i++)
     {
-        for (int j = 0; j < plate3.GetLength(1); j++)
+        for (int j = 0; j < STB_3.GetLength(1); j++)
         {
-            if (plate3[i, j] == numberDrawn)
+            if (STB_3[i, j] == numberDrawn)
             {
-                plate3[i, j] = 0;
-                CheckFullPlate(plate3, 0, 1, 2);
+                STB_3[i, j] = 0;
+                CheckFullPlate(STB_3, 0, 1, 2);
                 if (fullPlate)
                 {
-                    Console.WriteLine("plate3 is full.");
+                    Console.WriteLine("STB_3 is full.");
                     Console.Write("Press Enter to continue.");
                     Console.ReadLine();
                 }
-                CheckTwoRows(plate3, 0, 1, 2);
-                if (twoRows && !fullPlate && countPlate3 == 0)
+                CheckTwoRows(STB_3, 0, 1, 2);
+                if (twoRows && !fullPlate && countPlate3 == 0 && bingoCount == 1)
                 {
-                    Console.WriteLine("You have 2 rows on plate3.");
+                    Console.WriteLine("You have 2 rows on STB_3.");
                     Console.Write("Press Enter to continue.");
                     Console.ReadLine();
                     countPlate3++;
+                    bingoCount++;
                 }
-                CheckOneRow(plate3, i);
-                if (oneRow && !twoRows && !fullPlate)
+                CheckOneRow(STB_3, i);
+                if (oneRow && !twoRows && !fullPlate && bingoCount == 0)
                 {
-                    Console.WriteLine($"You have 1 row on plate3.\nRow: {i+1}");
+                    Console.WriteLine($"You have 1 row on STB_3.\nRow: {i+1}");
                     Console.Write("Press Enter to continue.");
                     Console.ReadLine();
+                    bingoCount++;
+                }
+            }
+        }
+    }
+    // Runs STB_4.
+    for (int i = 0; i < STB_4.GetLength(0); i++)
+    {
+        for (int j = 0; j < STB_4.GetLength(1); j++)
+        {
+            if (STB_4[i, j] == numberDrawn)
+            {
+                STB_4[i, j] = 0;
+                CheckFullPlate(STB_4, 0, 1, 2);
+                if (fullPlate)
+                {
+                    Console.WriteLine("STB_4 is full.");
+                    Console.Write("Press Enter to continue.");
+                    Console.ReadLine();
+                }
+                CheckTwoRows(STB_4, 0, 1, 2);
+                if (twoRows && !fullPlate && countPlate4 == 0 && bingoCount == 1)
+                {
+                    Console.WriteLine("You have 2 rows on STB_4.");
+                    Console.Write("Press Enter to continue.");
+                    Console.ReadLine();
+                    countPlate4++;
+                    bingoCount++;
+                }
+                CheckOneRow(STB_4, i);
+                if (oneRow && !twoRows && !fullPlate && bingoCount == 0)
+                {
+                    Console.WriteLine($"You have 1 row on STB_4.\nRow: {i + 1}");
+                    Console.Write("Press Enter to continue.");
+                    Console.ReadLine();
+                    bingoCount++;
+                }
+            }
+        }
+    }
+    // Runs STB_5.
+    for (int i = 0; i < STB_5.GetLength(0); i++)
+    {
+        for (int j = 0; j < STB_5.GetLength(1); j++)
+        {
+            if (STB_5[i, j] == numberDrawn)
+            {
+                STB_5[i, j] = 0;
+                CheckFullPlate(STB_5, 0, 1, 2);
+                if (fullPlate)
+                {
+                    Console.WriteLine("STB_5 is full.");
+                    Console.Write("Press Enter to continue.");
+                    Console.ReadLine();
+                }
+                CheckTwoRows(STB_5, 0, 1, 2);
+                if (twoRows && !fullPlate && countPlate2 == 0 && bingoCount == 0)
+                {
+                    Console.WriteLine("You have 2 rows on STB_5.");
+                    Console.Write("Press Enter to continue.");
+                    Console.ReadLine();
+                    countPlate5++;
+                    bingoCount++;
+                }
+                CheckOneRow(STB_5, i);
+                if (oneRow && !twoRows && !fullPlate && bingoCount == 0)
+                {
+                    Console.WriteLine($"You have 1 row on STB_5.\nRow: {i + 1}");
+                    Console.Write("Press Enter to continue.");
+                    Console.ReadLine();
+                    bingoCount++;
                 }
             }
         }
