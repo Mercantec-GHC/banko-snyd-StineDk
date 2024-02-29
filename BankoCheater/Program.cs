@@ -3,6 +3,7 @@ bool oneRow = false;
 bool twoRows = false;
 bool fullPlate = false;
 string drawHistory = "";
+int numberDrawn = 0;
 int countPlate1 = 0;
 int countPlate2 = 0;
 int countPlate3 = 0;
@@ -28,8 +29,12 @@ Console.WriteLine(drawHistory);
 Console.Write("Number Drawn: ");
 string input = Console.ReadLine().Trim();
 drawHistory = drawHistory + "--" + input;
-int numberDrawn = int.Parse(input);
-
+// if the input can't be converted to an int. go to checkpoint.
+if (!int.TryParse(input, out numberDrawn))
+{
+    // goes to checkpoint.
+    goto Label;
+}
 // Cross Checks the numberDrawn with the plates.
 while (numberDrawn >= 1 && numberDrawn <= 90)
 {
@@ -140,9 +145,9 @@ while (numberDrawn >= 1 && numberDrawn <= 90)
             }
         }
     }
-    // Goes to checkpoint.
     goto Label;
 }
+goto Label;
 bool CheckOneRow(int[,] array, int row)
 {
     // Loop through the array length horizontal, and compares the values stored with 0.
@@ -206,32 +211,10 @@ bool CheckFullPlate(int[,] array, int row1, int row2, int row3)
     {
         if (array[row1, i] == array[row2, i])
         {
-            // Loop through array length horizontal, a second time to se if the last row matches the other 2 rows.
+            // Loop through array length horizontal, a second time to se if all of the last row matches the other 2 rows.
             for (int j = 0; j < array.GetLength(1); j++)
             {
                 if (array[row2, j] != array[row3, j])
-                {
-                    return fullPlate = false;
-                }
-            }
-            return fullPlate = true;
-        }
-        if (array[row2, i] == array[row3, i])
-        {
-            for (int j = 0; j < array.GetLength(1); j++)
-            {
-                if (array[row3, j] != array[row1, j])
-                {
-                    return fullPlate = false;
-                }
-            }
-            return fullPlate = true;
-        }
-        if (array[row3, i] == array[row1, i])
-        {
-            for (int j = 0; j < array.GetLength(1); j++)
-            {
-                if (array[row1, j] != array[row2, j])
                 {
                     return fullPlate = false;
                 }
