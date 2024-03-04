@@ -1,5 +1,4 @@
 ﻿// BankoCheater
-using System.Numerics;
 
 bool oneRow = false;
 bool twoRows = false;
